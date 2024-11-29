@@ -1,0 +1,26 @@
+<header class="flex justify-between items-center px-6 py-3 bg-iexDark">
+  <div class="flex relative">
+    <a href={~p"/"}>
+      <img src="/images/gist-logo.svg" alt="Logo" class="h-8 w-auto" />
+    </a>
+
+    <a href={~p"/"} class="mr-6">
+      <div class="text-white font-brand font-bold text-3xl">Gist</div>
+    </a>
+
+    <div>
+      <input type="text" placeholder="Search..."
+        class="rounded-lg focus:outline-none focus:border-iexLavender focus:ring-0 px-3 py-1 bg-iexDark-dark placeholder-iexDark-light text-white font-brand font-regular text-sm mr-5 border-white" />
+
+      <button class="mt-2 mr-2 text-white text-[1rem] font-brand font-bold hover:text-iexDark-light">
+        All gists
+      </button>
+    </div>
+  </div>
+
+  <div class="relative">
+    <button class="img-down-arrow" type="button" id="user-menu-button">
+      <img src="/images/user-image.svg" alt="Profile Image" class="w-8 h-8 rounded-image-padding" />
+    </button>
+  </div>
+</header>
