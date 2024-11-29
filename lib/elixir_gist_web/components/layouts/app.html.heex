@@ -1,16 +1,19 @@
 <header class="flex justify-between items-center px-6 py-3 bg-iexDark">
   <div class="flex relative">
-    <a href={~p"/"}>
+    <a href={~s"/"}>
       <img src="/images/gist-logo.svg" alt="Logo" class="h-8 w-auto" />
     </a>
 
-    <a href={~p"/"} class="mr-6">
+    <a href={~s"/"} class="mr-6">
       <div class="text-white font-brand font-bold text-3xl">Gist</div>
     </a>
 
     <div>
-      <input type="text" placeholder="Search..."
-        class="rounded-lg focus:outline-none focus:border-iexLavender focus:ring-0 px-3 py-1 bg-iexDark-dark placeholder-iexDark-light text-white font-brand font-regular text-sm mr-5 border-white" />
+      <input
+        type="text"
+        placeholder="Search..."
+        class="rounded-lg focus:outline-none focus:border-iexLavender focus:ring-0 px-3 py-1 bg-iexDark-dark placeholder-iexDark-light text-white font-brand font-regular text-sm mr-5 border-white"
+      />
 
       <button class="mt-2 mr-2 text-white text-[1rem] font-brand font-bold hover:text-iexDark-light">
         All gists
@@ -19,8 +22,84 @@
   </div>
 
   <div class="relative">
-    <button class="img-down-arrow" type="button" id="user-menu-button">
+    <button class="img-down-arrow" type="button" id="user-menu-button" phx-click={ElixirGistWeb.Layouts.App.toggle_dropdown_menu()}>
       <img src="/images/user-image.svg" alt="Profile Image" class="w-8 h-8 rounded-image-padding" />
     </button>
+    <div
+      id="dropdown_menu"
+      class="absolute right-0 mt-2 py-2 w-64 bg-iexDark rounded-lg shadow-xl border border-white"
+      hidden="true"
+    >
+      <%= if @current_user do %>
+        <.link
+          href={~s"/users/settings"}
+          class="menu-item border-b border-white border-opacity-50"
+          role="menuitem"
+          tabindex="-1"
+          method="get"
+          id="user-menu-item-0"
+        >
+          Signed in as <%= @current_user.email %>
+        </.link>
+
+        <.link
+          href="#"
+          class="menu-item"
+          role="menuitem"
+          tabindex="-1"
+          method="get"
+          id="user-menu-item-1"
+        >
+          Your gists
+        </.link>
+        <.link
+          href="#"
+          class="menu-item border-b border-white border-opacity-50"
+          role="menuitem"
+          tabindex="-1"
+          method="get"
+          id="user-menu-item-2"
+        >
+          Saved gists
+        </.link>
+        <.link
+          href={~s"/users/log_out"}
+          class="menu-item"
+          role="menuitem"
+          tabindex="-1"
+          method="delete"
+          id="user-menu-item-3"
+        >
+        Sign out
+        </.link>
+      <% else %>
+        <.link
+          href={~s"/users/log_in"}
+          class="menu-item border-b border-white border-opacity-50"
+          role="menuitem"
+          tabindex="-1"
+          method="get"
+          id="user-menu-item-0"
+        >
+          Sign in
+        </.link>
+
+        <.link
+          href={~s"/users/register"}
+          class="menu-item"
+          role="menuitem"
+          tabindex="-1"
+          method="get"
+          id="user-menu-item-1"
+        >
+          Register
+        </.link>
+      <% end %>
+    </div>
   </div>
 </header>
+
+<main>
+  <.flash_group flash={@flash} />
+  <%= @inner_content %>
+</main>
