@@ -28,6 +28,7 @@
     <div
       id="dropdown_menu"
       class="absolute right-0 mt-2 py-2 w-64 bg-iexDark rounded-lg shadow-xl border border-white"
+      phx-click-away={ElixirGistWeb.Layouts.App.toggle_dropdown_menu()}
       hidden="true"
     >
       <%= if @current_user do %>
