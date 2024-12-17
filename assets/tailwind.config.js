@@ -22,7 +22,7 @@ module.exports = {
         iexPurple: {
           dark: '#631A61',
           light: '#E88FE5',
-          DEFAILT: '#A835A5',
+          DEFAULT: '#A835A5',
         },
         iexLavender: {
           dark: '#8C52FF',
